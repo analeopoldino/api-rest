@@ -48,7 +48,14 @@ app.post('/selecoes', (req, res) =>{
 app.delete('/selecoes/:id', (req, res) => {
     let index = buscarIndexSelecao(req.params.id)
     selecoes.splice(index, 1)
-res.send(`Seleção com id ${req.params.id} excluída com suceso!`)
+    res.send(`Seleção com id ${req.params.id} excluída com suceso!`)
+})
+
+app.put('/selecoes/:id', (req, res) => {
+    let index = buscarIndexSelecao(req.params.id)
+    selecoes[index].selecao = req.body.selecao
+    selecoes[index].grupo   = req.body.grupo
+    res.json(selecoes)
 })
 
 export default app
