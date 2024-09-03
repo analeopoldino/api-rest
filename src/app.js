@@ -25,7 +25,12 @@ function buscarIndexSelecao(id){
 
 // criar rota padrão ou raiz
 // req = requisição (request), res = resposta (response) 
-// endpopints       
+// endpopints  
+app.post('/selecoes', (req, res) =>{
+    selecoes.push(req.body)
+    res.status(201).send('Seleção cadastrada com sucesso!')
+})
+     
 app.get('/', (req, res) =>{
     res.send('Hello Word!!')
 })
@@ -39,9 +44,11 @@ app.get('/selecoes/:id', (req, res) => {
     res.json(buscarSelecaoPorId(req.params.id))
 })
 
-app.post('/selecoes', (req, res) =>{
-    selecoes.push(req.body)
-    res.status(201).send('Seleção cadastrada com sucesso!')
+app.put('/selecoes/:id', (req, res) => {
+    let index = buscarIndexSelecao(req.params.id)
+    selecoes[index].selecao = req.body.selecao
+    selecoes[index].grupo   = req.body.grupo
+    res.json(selecoes)
 })
 
 // splice: metodo usado para remover elemento de um array
@@ -49,13 +56,6 @@ app.delete('/selecoes/:id', (req, res) => {
     let index = buscarIndexSelecao(req.params.id)
     selecoes.splice(index, 1)
     res.send(`Seleção com id ${req.params.id} excluída com suceso!`)
-})
-
-app.put('/selecoes/:id', (req, res) => {
-    let index = buscarIndexSelecao(req.params.id)
-    selecoes[index].selecao = req.body.selecao
-    selecoes[index].grupo   = req.body.grupo
-    res.json(selecoes)
 })
 
 export default app
