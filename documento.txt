@@ -10,6 +10,8 @@ status 200 significa que a solicitação foi bem-sucedida, 201 significa que a r
 
 splice é metodo usado para remover elemento de um array
 
+utilização da organização MVC que é um padrão de arquitetura de software e divide uma aplicação em três componentes: Model, que gerencia a lógica de negócios e os dados; View, responsável pela interface com o usuário; e Controller, que intermedia a comunicação entre Model e View. Essa separação facilita a manutenção, escalabilidade e reusabilidade do código. Cada componente tem uma função específica, promovendo a organização e clareza do projeto. É amplamente utilizada em frameworks web para estruturar aplicações de forma eficiente.
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 TAREFAS PARA MELHORAR O CODIGO:
