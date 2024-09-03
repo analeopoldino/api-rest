@@ -1,0 +1,19 @@
+SOBRE O CODIGO:
+
+req = requisição (request), res = resposta (response)
+
+result é um array que contém os resultados da consulta SQL. Cada item do array representa uma linha retornada pela consulta.
+
+result[0] é usado para acessar o primeiro (e possivelmente único) item do array result. Se a consulta encontrar um resultado, result[0] será um objeto que contém os dados da linha retornada. Se não houver resultados, result[0] será undefined.
+
+status 200 significa que a solicitação foi bem-sucedida, 201 significa que a requisição foi bem sucedida e um novo recurso foi criado como resultado, 400 significa que o servidor não pode ou não irá processar a solicitação devido a algo que é percebido como um erro do cliente e 404 significa que o servidor não pode encontrar o recurso solicitado
+
+splice é metodo usado para remover elemento de um array
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TAREFAS PARA MELHORAR O CODIGO:
+
+tenho que comentar as ROTAS
+
+tem que refatorar as funcoes pq na rota app.put mesmo se o id nao existe o resultado retorna que a requisição foi feita com sucesso
