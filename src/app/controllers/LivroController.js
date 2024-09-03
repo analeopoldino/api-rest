@@ -1,67 +1,35 @@
-import connection from '../database/connection.js'
+import LivroRepository from '../repositories/LivroRepository.js'
 
-class LivroController{
+class LivroController {
 
-    index(req, res) {
-        const sql = "SELECT * FROM livros;"
-        connection.query(sql, (error, result) => {
-            if(error){
-                res.status(404).json({ 'error': error })
-            } else {
-                res.status(200).json(result)
-            }
-        })
+    async index(req, res) {
+        const row = await LivroRepository.findAll()
+        res.json(row)
     }
 
-    show(req, res){
+    async show(req, res){
         const id = req.params.id
-        const sql = "SELECT * FROM livros WHERE id=?;"
-        connection.query(sql, id, (error, result) => {
-            //pegando a primira posicao do result pois sempre vai ter so um resultado ou nenhum
-            const row = result[0]
-            if(error){
-                res.status(404).json({ 'error': error })
-            } else {
-                res.status(200).json(row)
-            }
-        })
+        const row = await LivroRepository.findById(id)
+        res.json(row)
     }
 
-    store(req, res){
+    async store(req, res){
         const livro = req.body
-        const sql = "INSERT INTO livros SET ?;"
-        connection.query(sql, livro, (error, result) => {
-            if(error){
-                res.status(404).json({ 'error': error })
-            } else {
-                res.status(201).json(result)
-            }
-        })
+        const row = await LivroRepository.create(livro)
+        res.json(row)
     }
 
-    update(req, res){
+    async update(req, res){
         const id = req.params.id
         const livro = req.body
-        const sql = "UPDATE livros SET ? WHERE id=?;"
-        connection.query(sql, [livro, id] , (error, result) => {
-            if(error){
-                res.status(404).json({ 'error': error })
-            } else {
-                res.status(200).json(result)
-            }
-        })
+        const row = await LivroRepository.update(livro, id)
+        res.json(row)
     }
 
-    delete(req, res){
+    async delete(req, res){
         const id = req.params.id
-         const sql = "DELETE FROM livros WHERE id=?;"
-         connection.query(sql, id, (error, result) => {
-             if(error){
-                 res.status(404).json({ 'error': error })
-             } else {
-                 res.status(200).json(result)
-             }
-         })
+        const row = await LivroRepository.delete(id)
+        res.json(row)
     }
 
 }
