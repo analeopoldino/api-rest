@@ -1,14 +1,20 @@
-import mysql from 'mysql'
+import mysql from 'mysql';
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: 'root',
-    database: 'bd_apirest'
-})
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || '3306',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'root',
+    database: process.env.DB_NAME || 'bd_apirest'
+});
 
-connection.connect()
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to the database:', err.stack);
+        return;
+    }
+    console.log('Connected to the database as ID', connection.threadId);
+});
 
 /**
  * Executa um codigo sql com ou sem valores
