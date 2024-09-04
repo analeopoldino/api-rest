@@ -1,13 +1,12 @@
-// server.js
-import express from 'express';
+import app from './app.js';
 
-const app = express();
 const PORT = process.env.PORT || 3000;
+const routes = require('./routes');
 
-app.get('/', (req, res) => {
-  res.send('Hello from Express on Vercel!');
-});
+app.use('/', routes);
 
+//Inicia o servidor na porta especificada.
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
 });
+
