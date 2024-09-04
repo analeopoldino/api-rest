@@ -1,70 +1,30 @@
-import connection from '../database/connection.js'
+import { consult } from '../database/connection.js'
 
 class LivroRepository{
     // CRUD
     create(livro) {
         const sql = "INSERT INTO livros SET ?;"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, livro, (error, result) => {
-                if(error) 
-                    return reject('Não foi possível cadastrar!')
-                // fazer o parse dos resultados
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consult(sql, livro, 'Não foi possível cadastrar!')
     }
 
     findAll() {
         const sql = "SELECT * FROM livros;"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, (error, result) => {
-                if(error) 
-                    return reject('Não foi possível localizar!')
-                // fazer o parse dos resultados
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consult(sql, 'Não foi possível localizar!')
     }
 
     findById(id) {
         const sql = "SELECT * FROM livros WHERE id=?;"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, id, (error, result) => {
-                if(error) 
-                    return reject('Não foi possível localizar!')
-                // fazer o parse dos resultados
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consult(sql, id, 'Não foi possível localizar!')
     }
 
     update(livro, id) {
         const sql = "UPDATE livros SET ? WHERE id=?;"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, [livro, id], (error, result) => {
-                if(error) 
-                    return reject('Não foi possível atualizar!')
-                // fazer o parse dos resultados
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consult(sql, [livro, id], 'Não foi possível atualizar!')
     }
 
     delete(id) {
         const sql = "DELETE FROM livros WHERE id=?;"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, id, (error, result) => {
-                if(error) 
-                    return reject('Não foi possível deletar!')
-                // fazer o parse dos resultados
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consult(sql, id, 'Não foi possível deletar!')
     }
 
 }
