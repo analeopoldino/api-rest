@@ -1,0 +1,46 @@
+Documentação do Projeto API REST para Gerenciamento de Livros   
+
+    Conceitos e Termos
+
+        - req (Request) e res (Response): `req` representa a solicitação feita ao servidor e `res` representa a resposta do servidor.
+
+        - result: Um array que contém os resultados da consulta SQL. Cada item do array representa uma linha retornada pela consulta. Se a consulta encontrar um resultado, `result[0]` será um objeto contendo os dados da linha. Se não houver resultados, `result[0]` será `undefined`.
+
+        - Códigos de Status HTTP:
+            - 200 OK: A solicitação foi bem-sucedida.
+            - 201 Created: A solicitação foi bem-sucedida e um novo recurso foi criado.
+            - 400 Bad Request: A solicitação não pode ser processada devido a um erro do cliente.
+            - 404 Not Found: O servidor não pode encontrar o recurso solicitado.
+
+        - splice(): Método usado para remover elementos de um array.
+
+        - Padrão MVC (Model-View-Controller):
+            - Model: Gerencia a lógica de negócios e os dados.
+            - View: Responsável pela interface com o usuário.
+            - Controller: Intermedia a comunicação entre Model e View.
+            - Esse padrão facilita a manutenção, escalabilidade e reusabilidade do código.
+
+        - Padrão Singleton:
+            - Garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Útil para controle centralizado sobre recursos compartilhados, como configurações ou conexões com banco de dados.
+
+    Funcionalidades Adicionais do Código
+
+        - Uso do Middleware:
+            - O código utiliza middleware para processar as requisições antes que elas cheguem às rotas. Por exemplo, o middleware `express.json()` é usado para analisar o corpo das requisições em JSON.
+            - Middleware adicional para logging (registro) das requisições é adicionado para monitorar e registrar as URLs e métodos das solicitações recebidas.
+
+        - Gerenciamento de Erros:
+            - Funções do `LivroController` e `LivroRepository` utilizam tratamento de erros para garantir que mensagens apropriadas sejam retornadas quando ocorrem falhas, como na busca, atualização ou exclusão de livros.
+            - Códigos de status HTTP são usados para indicar o sucesso ou falha das operações.
+
+        - Configuração de Conexão com o Banco de Dados:
+            - A conexão com o banco de dados é configurada utilizando variáveis de ambiente, o que permite flexibilidade na configuração para diferentes ambientes (desenvolvimento, teste, produção).
+            - O padrão Singleton é utilizado para garantir que apenas uma instância da conexão com o banco de dados seja criada e usada.
+
+        - Consultas SQL:
+            - Função `consult` é usada para executar consultas SQL de forma genérica, aceitando SQL e valores como parâmetros. Esta abordagem permite reutilizar a função para diferentes tipos de consultas.
+
+        - Controle de Fluxo:
+            - No controlador, as funções `store`, `update`, e `delete` são projetadas para verificar se o recurso solicitado existe antes de tentar criar, atualizar ou excluir um registro.
+            - A função `exists` no `LivroRepository` é utilizada para verificar se um livro com um determinado título já existe no banco de dados antes de criar um novo livro.
+
