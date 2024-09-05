@@ -1,14 +1,13 @@
 import mysql from 'mysql2/promise';  // Importa a versão com suporte a Promises
 
 // Configura a conexão com o banco de dados usando variáveis de ambiente ou valores padrão.
-const connection = await mysql.createConnection({
+const connection = mysql.createPool({
     host: process.env.MYSQLHOST,
-    port: process.env.MYSQLPORT || 3306,
+    port: process.env.MYSQLPORT,
     user: process.env.MYSQLUSER,
     password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE
+    database: process.env.MYSQL_DATABASE
 });
-
 
 // Conecta ao banco de dados e exibe uma mensagem no console sobre o status da conexão.
 connection.connect((err) => {
