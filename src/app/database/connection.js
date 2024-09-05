@@ -1,12 +1,12 @@
-import mysql from 'mysql2/promise';  // Importa a versão com suporte a Promises
+import mysql from 'mysql';
 
 // Configura a conexão com o banco de dados usando variáveis de ambiente ou valores padrão.
-const connection = mysql.createPool({
-    host: process.env.MYSQLHOST,
-    port: process.env.MYSQLPORT,
-    user: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || '3306',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'root',
+    database: process.env.DB_NAME || 'bd_apirest'
 });
 
 // Conecta ao banco de dados e exibe uma mensagem no console sobre o status da conexão.
