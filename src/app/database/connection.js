@@ -6,7 +6,7 @@ const connection = mysql.createPool({
     port: process.env.MYSQLPORT,
     user: process.env.MYSQLUSER,
     password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQL_DATABASE
+    database: process.env.MYSQLDATABASE
 });
 
 // Conecta ao banco de dados e exibe uma mensagem no console sobre o status da conexão.
