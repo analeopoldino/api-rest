@@ -51,7 +51,7 @@ Esta API permite gerenciar um catálogo de livros, oferecendo operações de CRU
 
 ## Hospedagem
 
-A API pode ser acessada em: [https://fcff-2804-d45-bf29-5b00-f198-bbfc-5df2-c20a.ngrok-free.app/livros](https://fcff-2804-d45-bf29-5b00-f198-bbfc-5df2-c20a.ngrok-free.app/livros)
+A API pode ser acessada em: [Acesse](https://api-rest-gold.vercel.app/)
 
 ## Contribuição
 
