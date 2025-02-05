@@ -1,12 +1,16 @@
 import mysql from 'mysql';
+import dotenv from 'dotenv';
 
-// Configura a conexão com o banco de dados usando variáveis de ambiente ou valores padrão.
+// Carrega variáveis do arquivo .env
+dotenv.config();
+
+// Configurar conexão com MySQL
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || '3306',
-    user: process.env.DB_USER || 'user_api',
-    password: process.env.DB_PASSWORD || 'nova_senha_genérica',
-    database: process.env.DB_NAME || 'bd_apirest'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // Conecta ao banco de dados e exibe uma mensagem no console sobre o status da conexão.
