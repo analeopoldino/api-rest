@@ -1,4 +1,4 @@
-import mysql from 'mysql';
+const mysql = require('mysql');
 import dotenv from 'dotenv';
 
 // Carrega variáveis do arquivo .env
@@ -45,4 +45,4 @@ export const consult = (sql, valores='', messageReject) => {
     });
 };
 
-export default connection;
+module.exports = connection;
