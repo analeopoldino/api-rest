@@ -5,13 +5,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Configurar conexão com MySQL
+import mysql from 'mysql';
+
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
+    database: process.env.DB_NAME,
+    ssl: { rejectUnauthorized: true } 
 
 // Conecta ao banco de dados e exibe uma mensagem no console sobre o status da conexão.
 connection.connect((err) => {
