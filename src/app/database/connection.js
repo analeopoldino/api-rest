@@ -13,7 +13,8 @@ const connection = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    ssl: { rejectUnauthorized: true } 
+    ssl: { rejectUnauthorized: true }
+});
 
 // Conecta ao banco de dados e exibe uma mensagem no console sobre o status da conexão.
 connection.connect((err) => {
