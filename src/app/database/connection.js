@@ -37,4 +37,4 @@ export const consult = (sql, valores = '', messageReject) => {
     });
 };
 
-module.exports = connection;
+export default connection;
